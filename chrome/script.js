@@ -42,7 +42,13 @@
 						break;
 					case "user":
 						var userText = $card.parent().find("div.witAssignedTo").text();
-						if (userText.toLowerCase() === patternText.toLowerCase()) {
+						if (userText.toLowerCase() === patternText.toLowerCase() || (userText === "" && patternText.toLowerCase() === "unassigned") ) {
+							TfsColorizer.applyStyle( $card, backColor, borderColor, foreColor );
+						}
+						break;
+					case "column":
+						var columnNo = $card.parents('td').index();
+						if (columnNo == patternText) {
 							TfsColorizer.applyStyle( $card, backColor, borderColor, foreColor );
 						}
 						break;
